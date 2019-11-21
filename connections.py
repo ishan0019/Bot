@@ -9,8 +9,8 @@ class SearchHistory:
 
 	def connectionStart(self):
 		con = psycopg2.connect(user = "postgres",
-                                  password = "postgres1x2x",
-                                  host = "database-1.c01msz8wnl0d.us-east-2.rds.amazonaws.com",
+                                  password = os.environ['DB_PASS'],
+                                  host = os.environ['HOST'],
                                   port = "5432",
                                   database = "database-1")
 		
@@ -29,8 +29,8 @@ class SearchHistory:
 				self.cursor = self.connection.cursor()		
 				timestamp = ''
 				query = "INSERT INTO BotHistory (userId, username, log) VALUES (%s,%s,%s)"
-				print(self.userId)
-				print(self.user)
+				# print(self.userId)
+				# print(self.user)
 				record = (self.userId, str(self.user), str(log))
 				self.cursor.execute(query, record)
 				self.connection.commit()
@@ -51,7 +51,7 @@ class SearchHistory:
 			query = "select log from BotHistory where userId=%s and log like %s"
 			self.cursor.execute(query, (self.userId, str(key)))
 			record = self.cursor.fetchone()
-			print(record)
+			# print(record)
 			return record
 		except (Exception, psycopg2.Error) as error :
 		    if(self.connection):

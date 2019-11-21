@@ -5,9 +5,6 @@ import bs4
 import discord
 from discord.ext import commands
 from connections import SearchHistory
-# from dotenv import load_dotenv
-# from boto.s3.connection import S3Connection
-# s3 = S3Connection(os.environ['token'], os.environ['S3_SECRET'])
 
 client = commands.Bot(command_prefix = '')
 
@@ -20,16 +17,15 @@ async def on_ready():
 async def hi(ctx):
 	await ctx.send(f'hey!')
 
-@client.command(aliases=['!google'])
+@client.command(aliases=['!google', '!Google', '!GOOGLE'])
 async def google(ctx, *, question):
-	print(ctx.message.author)
-	print(ctx.message.author.id)
-	# print(client.user)
+	# print(ctx.message.author)
+	# print(ctx.message.author.id)
 	sh = SearchHistory(ctx.message.author, ctx.message.author.id)
 	sh.setMessage(question)
-	# sh.getMessage()
 	linkList = searchGoogle(question)
-	await ctx.send(f'{question}?\nAnswer\n{linkList}')
+    resString = ' '.join([str(elem) for elem in linkList]) 
+	await ctx.send(f'{question}?\nAnswer\n{resString}')
 
 headers_Get = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0',
