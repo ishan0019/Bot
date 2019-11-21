@@ -1,9 +1,14 @@
 import requests
 import sys
+import os
 import bs4
 import discord
 from discord.ext import commands
 from connections import SearchHistory
+from dotenv import load_dotenv
+
+load_dotenv()
+token = os.getenv('DISCORD_TOKEN')
 
 client = commands.Bot(command_prefix = '')
 
@@ -63,4 +68,4 @@ async def recent(ctx, *, question):
 	await ctx.send(f'{resString}')
 
 
-client.run('NjQ2NjEzOTEwNTY4NDM1NzIy.XdaALg.o4SVbd04zGOgVud5Pr9U_W2dKrg')
+client.run(token)
