@@ -5,10 +5,9 @@ import bs4
 import discord
 from discord.ext import commands
 from connections import SearchHistory
-from dotenv import load_dotenv
-
-load_dotenv()
-token = os.getenv('DISCORD_TOKEN')
+# from dotenv import load_dotenv
+# from boto.s3.connection import S3Connection
+# s3 = S3Connection(os.environ['token'], os.environ['S3_SECRET'])
 
 client = commands.Bot(command_prefix = '')
 
@@ -68,4 +67,4 @@ async def recent(ctx, *, question):
 	await ctx.send(f'{resString}')
 
 
-client.run(token)
+client.run(os.environ['TOKEN'])

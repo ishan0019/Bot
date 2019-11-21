@@ -2,4 +2,3 @@ requests
 discord
 psycopg2
 bs4
-python-dotenv
