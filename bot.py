@@ -63,4 +63,4 @@ async def recent(ctx, *, question):
 	await ctx.send(f'{resString}')
 
 
-client.run('NjQ2NjEzOTEwNTY4NDM1NzIy.XdZ-9Q.Z6d3eZSprnebyr3qFwzHc6zlLOM')
+client.run('NjQ2NjEzOTEwNTY4NDM1NzIy.XdaALg.o4SVbd04zGOgVud5Pr9U_W2dKrg')
