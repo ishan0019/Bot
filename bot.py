@@ -24,7 +24,7 @@ async def google(ctx, *, question):
 	sh = SearchHistory(ctx.message.author, ctx.message.author.id)
 	sh.setMessage(question)
 	linkList = searchGoogle(question)
-	resString = ' '.join([str(elem) for elem in linkList])
+	resString = '\n '.join([str(elem) for elem in linkList])
 	await ctx.send(f'{question}?\nAnswer\n{resString}')
 
 headers_Get = {
@@ -58,7 +58,7 @@ async def recent(ctx, *, question):
 	sh = SearchHistory(ctx.message.author, ctx.message.author.id)
 	history = []
 	history = list(sh.getMessage(question))
-	resString = ' '.join([str(elem) for elem in history]) 
+	resString = '\n '.join([str(elem) for elem in history]) 
 
 	await ctx.send(f'{resString}')
 
