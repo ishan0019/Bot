@@ -1,4 +1,5 @@
-import psycopg2
+import 
+import os
 
 class SearchHistory:
 	def __init__(self, user, id):
