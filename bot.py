@@ -4,6 +4,7 @@ import os
 import bs4
 import discord
 from discord.ext import commands
+from urllib.parse import unquote
 from connections import SearchHistory
 
 client = commands.Bot(command_prefix = '')
@@ -47,7 +48,7 @@ def searchGoogle(query):
 	output = []
 	linkCount = min(5, len(linkElements))
 	for i in range(linkCount):
-		output.append(linkElements[i].get('href'))
+		output.append(unquote(linkElements[i].get('href')))
 		
 	return output
 
